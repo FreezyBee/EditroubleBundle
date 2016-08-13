@@ -34,4 +34,4 @@ Learn how to use EditroubleBundle in [documentation](https://github.com/FreezyBe
 
 -----
 
-Homepage [https://freezybee.ifire.cz](https://freezybee.ifire.cz) and repository [http://github.com/FreezyBee/Editrouble](http://github.com/FreezyBee/Editrouble).
+Homepage [https://freezybee.ifire.cz](https://freezybee.ifire.cz) and repository [http://github.com/FreezyBee/EditroubleBundle](http://github.com/FreezyBee/EditroubleBundle).

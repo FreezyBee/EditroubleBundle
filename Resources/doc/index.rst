@@ -9,10 +9,7 @@ following command to download the latest stable version of this bundle:
 
 .. code-block:: bash
 
-    $ composer require symfony/editrouble-bundle
-
-This command requires you to have Composer installed globally, as explained
-in the `installation chapter`_ of the Composer documentation.
+    $ composer require freezy-bee/editrouble-bundle
 
 Step 2: Enable the Bundle
 -------------------------
@@ -67,5 +64,3 @@ Step 4: Add JS file to base template
         {% include("EditroubleBundle::includejsfiles.html.twig") %}
     </body>
 ..
-
-_`installation chapter`: https://getcomposer.org/doc/00-intro.md
