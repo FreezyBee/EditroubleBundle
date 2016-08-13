@@ -1,16 +1,19 @@
 FreezyBee/EditroubleBundle
 ======
 
+[![Build Status](https://travis-ci.org/FreezyBee/EditroubleBundle.svg?branch=master)](https://travis-ci.org/FreezyBee/EditroubleBundle)
+
 Editrouble = Content editable bundle for Symfony.
 
 
 Requirements
 ------------
 
-FreezyBee/Editrouble requires PHP 5.4
+FreezyBee/Editrouble requires PHP 7
 
-- [Symfony](https://symfony.com)
-
+- [Symfony/Secutiry](https://symfony.com/doc/current/security.html)
+- [Doctrine/ORM](http://www.doctrine-project.org/projects/orm.html)
+- [Twig](http://twig.sensiolabs.org)
 
 Installation
 ------------
