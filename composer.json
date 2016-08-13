@@ -1,0 +1,35 @@
+{
+  "name": "freezy-bee/editrouble-bundle",
+  "type": "library",
+  "description": "Content editable bundle for Symfony.",
+  "keywords": [
+    "symfony",
+    "freezy-bee",
+    "MediaEditor"
+  ],
+  "homepage": "http://freezybee.ifire.cz",
+  "license": [
+    "BSD-3-Clause",
+    "GPL-2.0",
+    "GPL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Jakub Janata",
+      "homepage": "https://ifire.cz"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "symfony/security": "^3.0",
+    "symfony/translation": "^3.0",
+    "twig/twig": "^1.24",
+    "doctrine/orm": "^2.3",
+    "doctrine/doctrine-bundle": "^1.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "FreezyBee\\EditroubleBundle\\": ""
+    }
+  }
+}

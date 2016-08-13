@@ -1,0 +1,15 @@
+{# basic js files needed for vie #}
+
+{% if userHasPermission is not defined %}
+<script src="{{ asset('bundles/editrouble/editrouble.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var link = document.createElement('link');
+        link.href = '{{ asset('bundles/editrouble/editrouble.css') }}';
+        link.setAttribute('rel', 'stylesheet');
+        link.setAttribute('type', 'text/css');
+        document.head.appendChild(link);
+        editrouble = new Editrouble('{{ path('editrouble_update') }}');
+    });
+</script>
+{% endif %}

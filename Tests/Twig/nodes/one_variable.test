@@ -1,0 +1,3 @@
+// line 1
+// editrouble
+echo $this->env->getExtension('editrouble')->getContext('namespaceX','nameX' .  $context['varX'], $context['app']->getUser());
