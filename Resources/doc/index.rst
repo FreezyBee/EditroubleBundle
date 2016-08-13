@@ -10,6 +10,7 @@ following command to download the latest stable version of this bundle:
 .. code-block:: bash
 
     $ composer require freezy-bee/editrouble-bundle
+..
 
 Step 2: Enable the Bundle
 -------------------------
@@ -63,4 +64,12 @@ Step 4: Add JS file to base template
         ...
         {% include("EditroubleBundle::includejsfiles.html.twig") %}
     </body>
+..
+
+Step 5: Update database schema
+------------------------------
+
+.. code-block:: bash
+
+    $ php bin/console d:s:u --force
 ..
