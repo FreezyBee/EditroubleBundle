@@ -12,3 +12,6 @@ php:
 
 install:
     - composer install
+
+after_success:
+    - coveralls

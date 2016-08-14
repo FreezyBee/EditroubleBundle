@@ -2,6 +2,7 @@ FreezyBee/EditroubleBundle
 ======
 
 [![Build Status](https://travis-ci.org/FreezyBee/EditroubleBundle.svg?branch=master)](https://travis-ci.org/FreezyBee/EditroubleBundle)
+[![Coverage Status](https://coveralls.io/repos/github/FreezyBee/EditroubleBundle/badge.svg?branch=master)](https://coveralls.io/github/FreezyBee/EditroubleBundle?branch=master)
 
 Editrouble = Content editable bundle for Symfony.
 
