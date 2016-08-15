@@ -41,8 +41,7 @@ class EditroubleNode extends Twig_Node
         $name = rtrim($name, ' .');
 
         $output = 'echo $this->env->getExtension(\'editrouble\')';
-        $output .= '->getContext(\'' . $this->getAttribute('namespace') . '\',';
-        $output .= $name . ', $context[\'app\']->getUser());' . "\n";
+        $output .= '->getContext(\'' . $this->getAttribute('namespace') . '\',' . $name . ');' . "\n";
 
         $compiler
             ->write("// editrouble\n")

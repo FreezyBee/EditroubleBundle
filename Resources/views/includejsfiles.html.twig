@@ -1,6 +1,6 @@
 {# basic js files needed for vie #}
 
-{% if userHasPermission is not defined %}
+{% if is_granted(get_editrouble_role()) %}
 <script src="{{ asset('bundles/editrouble/editrouble.js') }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {

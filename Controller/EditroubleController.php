@@ -3,8 +3,8 @@
 namespace FreezyBee\EditroubleBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class EditroubleController
@@ -14,17 +14,30 @@ class EditroubleController extends Controller
 {
     /**
      * @param Request $request
-     * @return JsonResponse
+     * @return Response
      */
     public function updateAction(Request $request)
     {
-        $data = json_decode($request->getContent());
+        $role = $this->getParameter('editrouble.role');
 
-        $contentProvider = $this->get('freezy_bee_editrouble.model.content_provider');
+        if ($this->isGranted($role)) {
+            $data = json_decode($request->getContent());
 
-        foreach ($data as $item) {
-            $contentProvider->saveContent($item->namespace, $item->name, 'en', $item->content);
+            $contentProvider = $this->get('freezy_bee_editrouble.model.content_provider');
+
+            foreach ($data as $item) {
+                $contentProvider->saveContent(
+                    $item->namespace,
+                    $item->name,
+                    $this->get('translator')->getLocale(),
+                    $item->content
+                );
+            }
+
+            return new Response();
+
+        } else {
+            return new Response('You do not have permission.', Response::HTTP_FORBIDDEN);
         }
-        return new JsonResponse($data);
     }
 }

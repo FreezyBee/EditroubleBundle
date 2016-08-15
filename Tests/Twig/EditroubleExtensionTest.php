@@ -6,6 +6,7 @@ use FreezyBee\EditroubleBundle\Model\ContentProvider;
 use FreezyBee\EditroubleBundle\Tests\Mock\TestStorage;
 use FreezyBee\EditroubleBundle\Twig\EditroubleExtension;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Translation\Translator;
 
 /**
@@ -35,6 +36,7 @@ class EditroubleExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $translator = new Translator('en');
         $contentProvider = new ContentProvider(new ArrayAdapter, new TestStorage);
-        return new EditroubleExtension($translator, $contentProvider);
+        $secutiryChecker = $this->createMock(AuthorizationCheckerInterface::class);
+        return new EditroubleExtension('ROLE_ADMIN', $translator, $secutiryChecker, $contentProvider);
     }
 }

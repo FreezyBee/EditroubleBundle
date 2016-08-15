@@ -73,3 +73,17 @@ Step 5: Update database schema
 
     $ php bin/console d:s:u --force
 ..
+
+
+Step 6: Change user role (optionaly)
+------------------------------------
+
+You can add config section to config.yml
+
+.. code-block:: yaml
+
+    # app/config/config.yml
+
+    editrouble:
+        roles: ROLE_EDITOR # default is ROLE_ADMIN
+..

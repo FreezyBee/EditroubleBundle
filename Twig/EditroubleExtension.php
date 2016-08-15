@@ -3,7 +3,8 @@
 namespace FreezyBee\EditroubleBundle\Twig;
 
 use FreezyBee\EditroubleBundle\Model\ContentProvider;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationCredentialsNotFoundException;
 use Symfony\Component\Translation\Translator;
 
 /**
@@ -12,6 +13,11 @@ use Symfony\Component\Translation\Translator;
  */
 class EditroubleExtension extends \Twig_Extension
 {
+    /**
+     * @var string
+     */
+    private $role;
+
     /**
      * @var Translator
      */
@@ -23,14 +29,37 @@ class EditroubleExtension extends \Twig_Extension
     private $contentProvider;
 
     /**
+     * @var AuthorizationCheckerInterface
+     */
+    private $securityChecker;
+
+    /**
      * EditroubleExtension constructor.
+     * @param string $role
      * @param Translator $translator
+     * @param AuthorizationCheckerInterface $securityChecker
      * @param ContentProvider $contentProvider
      */
-    public function __construct(Translator $translator, ContentProvider $contentProvider)
-    {
+    public function __construct(
+        $role,
+        Translator $translator,
+        AuthorizationCheckerInterface $securityChecker,
+        ContentProvider $contentProvider
+    ) {
+        $this->role = $role;
         $this->translator = $translator;
         $this->contentProvider = $contentProvider;
+        $this->securityChecker = $securityChecker;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getFunctions()
+    {
+        return ['get_editrouble_role' => new \Twig_SimpleFunction('get_editrouble_role', function () {
+            return $this->role;
+        })];
     }
 
     /**
@@ -52,17 +81,23 @@ class EditroubleExtension extends \Twig_Extension
     /**
      * @param $namespace
      * @param $name
-     * @param UserInterface $user
      * @return string
      */
-    public function getContext($namespace, $name, UserInterface $user = null)
+    public function getContext($namespace, $name)
     {
         $item = $this->contentProvider->getContent($namespace, $name, ['locale' => $this->translator->getLocale()]);
 
-        if ($user && in_array('ROLE_ADMIN', $user->getRoles(), true)) {
-            $json = json_encode(['namespace' => $namespace, 'name' => $name]);
-            return '<div class="editrouble" data-editrouble=\'' . $json . '\'>' . $item . '</div>';
-        } else {
+        try {
+            if ($this->securityChecker->isGranted($this->role)) {
+                $json = json_encode(['namespace' => $namespace, 'name' => $name]);
+
+                return '<div class="editrouble" data-editrouble=\'' . $json . '\'>' .
+                ($item ? $item : 'Zadejte text...') . '</div>';
+            }
+
+            return $item;
+
+        } catch (AuthenticationCredentialsNotFoundException $e) {
             return $item;
         }
     }
