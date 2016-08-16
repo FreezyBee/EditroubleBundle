@@ -21,12 +21,12 @@ Preview
 - **During editing**
 
 .. image:: https://raw.githubusercontent.com/freezybee/editroublebundle/master/Resources/doc/on.png
-:width: 100%
+    :width: 100%
 
 - **After editing**
 
 .. image:: https://raw.githubusercontent.com/freezybee/editroublebundle/master/Resources/doc/off.png
-:width: 100%
+    :width: 100%
 
 
 Examples
