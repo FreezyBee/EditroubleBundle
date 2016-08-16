@@ -30,13 +30,62 @@ class EditroubleExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     *
+     */
+    public function testGetContentLogged()
+    {
+        $extension = $this->getExtension(true);
+
+        $content = $extension->getContext('namespaceX', 'nameX');
+        $exp = '<div class="editrouble" data-editrouble=\'{"namespace":"namespaceX","name":"nameX"}\'>contentX</div>';
+        $this->assertEquals($exp, $content);
+
+        $content = $extension->getContext('namespaceX', 'name"X');
+        $exp = '<div class="editrouble" data-editrouble=\'{"namespace":"namespaceX","name":"name\"X"}\'>"te"st"</div>';
+        $this->assertEquals($exp, $content);
+
+        $extension = $this->getExtension(true, 'cs');
+
+        $content = $extension->getContext('namespaceX', 'nameY');
+        $exp = '<div class="editrouble" data-editrouble=\'{"namespace":"namespaceX","name":"nameY"}\'>' .
+            '<strong>Do you like czech beer?</strong></div>';
+        $this->assertEquals($exp, $content);
+    }
+
+
+    /**
+     *
+     */
+    public function testGetContentEmpty()
+    {
+        $extension = $this->getExtension(true, 'en');
+
+        $content = $extension->getContext('namespaceX', 'nameY');
+        $exp = '<div class="editrouble" data-editrouble=\'{"namespace":"namespaceX","name":"nameY"}\'>Fill</div>';
+        $this->assertEquals($exp, $content);
+
+        $extension = $this->getExtension(true, 'cs', 'Zadej text');
+
+        $content = $extension->getContext('namespaceX', 'nameZ');
+        $exp = '<div class="editrouble" data-editrouble=\'{"namespace":"namespaceX","name":"nameZ"}\'>' .
+            'Zadej text</div>';
+        $this->assertEquals($exp, $content);
+    }
+
+    /**
+     * @param bool $isGranted
+     * @param string $locale
+     * @param string $message
      * @return EditroubleExtension
      */
-    private function getExtension()
+    private function getExtension($isGranted = false, $locale = 'en', $message = 'Fill')
     {
-        $translator = new Translator('en');
+        $translator = new Translator($locale);
         $contentProvider = new ContentProvider(new ArrayAdapter, new TestStorage);
         $secutiryChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        return new EditroubleExtension('ROLE_ADMIN', $translator, $secutiryChecker, $contentProvider);
+        $secutiryChecker->method('isGranted')
+            ->willReturn($isGranted);
+
+        return new EditroubleExtension($message, 'ROLE_ADMIN', $translator, $secutiryChecker, $contentProvider);
     }
 }

@@ -12,7 +12,12 @@ class TestStorage implements IStorage
 {
     private static $data = [
         'namespaceX.en' => [
-            'nameX' => 'contentX'
+            'nameX' => 'contentX',
+            'name"X' => '"te"st"'
+        ],
+        'namespaceX.cs' => [
+            'nameX' => '<strong>hello czech!!!</strong>',
+            'nameY' => '<strong>Do you like czech beer?</strong>'
         ]
     ];
 

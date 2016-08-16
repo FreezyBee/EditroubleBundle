@@ -1,7 +1,7 @@
 services:
     freezy_bee_editrouble.twig_extension:
         class: FreezyBee\EditroubleBundle\Twig\EditroubleExtension
-        arguments: [%editrouble.role%]
+        arguments: [%editrouble.info_message%, %editrouble.role%]
         tags:
             - { name: twig.extension }
         autowire: true

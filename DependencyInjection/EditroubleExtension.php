@@ -23,6 +23,7 @@ class EditroubleExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
         $container->setParameter('editrouble.role', $config['role']);
+        $container->setParameter('editrouble.info_message', $config['info_message']);
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');

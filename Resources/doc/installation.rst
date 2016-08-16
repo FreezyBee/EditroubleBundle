@@ -75,8 +75,8 @@ Step 5: Update database schema
 ..
 
 
-Step 6: Change user role (optionaly)
-------------------------------------
+Step 6: Change user role and empty info message (optionally)
+------------------------------------------------------------
 
 You can add config section to config.yml
 
@@ -85,5 +85,11 @@ You can add config section to config.yml
     # app/config/config.yml
 
     editrouble:
-        roles: ROLE_EDITOR # default is ROLE_ADMIN
+        role: ROLE_EDITOR # default is ROLE_ADMIN
+        info_message: 'Please fill this textarea...' # default is 'Zadejte text...'
 ..
+
+Step 7: How to use it?
+----------------------
+
+[Using guide](https://github.com/FreezyBee/EditroubleBundle/blob/master/Resources/doc/using.rst).

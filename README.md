@@ -29,8 +29,13 @@ $ composer require freezy-bee/editrouble-bundle
 Documentation
 ------------
 
-Learn how to use EditroubleBundle in [documentation](https://github.com/FreezyBee/EditroubleBundle/blob/master/Resources/doc/index.rst).
+Learn how to use EditroubleBundle in [documentation](https://github.com/FreezyBee/EditroubleBundle/blob/master/Resources/doc/installation.rst).
 
+
+Preview
+-------
+
+![img](https://raw.githubusercontent.com/freezybee/editroublebundle/master/Resources/doc/on.png).
 
 
 -----

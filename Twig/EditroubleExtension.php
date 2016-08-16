@@ -16,6 +16,11 @@ class EditroubleExtension extends \Twig_Extension
     /**
      * @var string
      */
+    private $infoMessage;
+
+    /**
+     * @var string
+     */
     private $role;
 
     /**
@@ -35,17 +40,20 @@ class EditroubleExtension extends \Twig_Extension
 
     /**
      * EditroubleExtension constructor.
+     * @param string $infoMessage
      * @param string $role
      * @param Translator $translator
      * @param AuthorizationCheckerInterface $securityChecker
      * @param ContentProvider $contentProvider
      */
     public function __construct(
+        $infoMessage,
         $role,
         Translator $translator,
         AuthorizationCheckerInterface $securityChecker,
         ContentProvider $contentProvider
     ) {
+        $this->infoMessage = $infoMessage;
         $this->role = $role;
         $this->translator = $translator;
         $this->contentProvider = $contentProvider;
@@ -92,7 +100,7 @@ class EditroubleExtension extends \Twig_Extension
                 $json = json_encode(['namespace' => $namespace, 'name' => $name]);
 
                 return '<div class="editrouble" data-editrouble=\'' . $json . '\'>' .
-                ($item ? $item : 'Zadejte text...') . '</div>';
+                ($item ? $item : $this->infoMessage) . '</div>';
             }
 
             return $item;

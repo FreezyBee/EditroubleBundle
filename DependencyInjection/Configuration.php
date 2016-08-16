@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('role')->defaultValue('ROLE_ADMIN')->end()
+                ->scalarNode('info_message')->defaultValue('Zadejte text...')->end()
             ->end();
 
         return $treeBuilder;
