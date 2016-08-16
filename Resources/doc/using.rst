@@ -4,7 +4,7 @@ Using guide
 Installation
 ------------
 
-First install bundle and add routes + js file block - [installation](https://github.com/FreezyBee/EditroubleBundle/blob/master/Resources/doc/installation.rst).
+First install bundle and add routes + js file block (`installation <https://github.com/FreezyBee/EditroubleBundle/blob/master/Resources/doc/installation.rst>`_).
 
 
 How it works?
@@ -18,11 +18,15 @@ How it works?
 Preview
 -------
 
+- **During editing**
+
 .. image:: https://raw.githubusercontent.com/freezybee/editroublebundle/master/Resources/doc/on.png
-    :width: 100%
+:width: 100%
+
+- **After editing**
 
 .. image:: https://raw.githubusercontent.com/freezybee/editroublebundle/master/Resources/doc/off.png
-    :width: 100%
+:width: 100%
 
 
 Examples

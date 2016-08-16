@@ -92,4 +92,4 @@ You can add config section to config.yml
 Step 7: How to use it?
 ----------------------
 
-[Using guide](https://github.com/FreezyBee/EditroubleBundle/blob/master/Resources/doc/using.rst).
+`Using guide <https://github.com/FreezyBee/EditroubleBundle/blob/master/Resources/doc/using.rst>`_
