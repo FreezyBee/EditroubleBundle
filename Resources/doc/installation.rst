@@ -74,8 +74,18 @@ Step 5: Update database schema
     $ php bin/console d:s:u --force
 ..
 
+Step 6: Create symlink for assets
+---------------------------------
 
-Step 6: Change user role and placeholder (optionally)
+If you don't have added script *Sensio\Bundle\DistributionBundle\Composer\ScriptHandler::installAssets* in your composer, please link assets:
+
+.. code-block:: bash
+
+    $ cd web/bundles
+    $ ln -s  ../../vendor/freezy-bee/editrouble-bundle/Resources/public/ freezybeeeditrouble
+..
+
+Step 7: Change user role and placeholder (optionally)
 -----------------------------------------------------
 
 You can add config section to config.yml

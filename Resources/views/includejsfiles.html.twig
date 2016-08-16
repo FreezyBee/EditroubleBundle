@@ -1,11 +1,11 @@
 {# basic js files needed for vie #}
 
 {% if is_granted(get_editrouble_role()) %}
-    <script src="{{ asset('bundles/editrouble/editrouble.js') }}"></script>
+    <script src="{{ asset('bundles/freezybeeeditrouble/editrouble.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var link = document.createElement('link');
-            link.href = '{{ asset('bundles/editrouble/editrouble.css') }}';
+            link.href = '{{ asset('bundles/freezybeeeditrouble/editrouble.css') }}';
             link.setAttribute('rel', 'stylesheet');
             link.setAttribute('type', 'text/css');
             document.head.appendChild(link);
