@@ -61,24 +61,22 @@ class EditroubleExtensionTest extends \PHPUnit_Framework_TestCase
         $extension = $this->getExtension(true, 'en');
 
         $content = $extension->getContext('namespaceX', 'nameY');
-        $exp = '<div class="editrouble" data-editrouble=\'{"namespace":"namespaceX","name":"nameY"}\'>Fill</div>';
+        $exp = '<div class="editrouble" data-editrouble=\'{"namespace":"namespaceX","name":"nameY"}\'></div>';
         $this->assertEquals($exp, $content);
 
-        $extension = $this->getExtension(true, 'cs', 'Zadej text');
+        $extension = $this->getExtension(true, 'cs');
 
         $content = $extension->getContext('namespaceX', 'nameZ');
-        $exp = '<div class="editrouble" data-editrouble=\'{"namespace":"namespaceX","name":"nameZ"}\'>' .
-            'Zadej text</div>';
+        $exp = '<div class="editrouble" data-editrouble=\'{"namespace":"namespaceX","name":"nameZ"}\'></div>';
         $this->assertEquals($exp, $content);
     }
 
     /**
      * @param bool $isGranted
      * @param string $locale
-     * @param string $message
      * @return EditroubleExtension
      */
-    private function getExtension($isGranted = false, $locale = 'en', $message = 'Fill')
+    private function getExtension($isGranted = false, $locale = 'en')
     {
         $translator = new Translator($locale);
         $contentProvider = new ContentProvider(new ArrayAdapter, new TestStorage);
@@ -86,6 +84,6 @@ class EditroubleExtensionTest extends \PHPUnit_Framework_TestCase
         $secutiryChecker->method('isGranted')
             ->willReturn($isGranted);
 
-        return new EditroubleExtension($message, 'ROLE_ADMIN', $translator, $secutiryChecker, $contentProvider);
+        return new EditroubleExtension('placeholder', 'ROLE_ADMIN', $translator, $secutiryChecker, $contentProvider);
     }
 }

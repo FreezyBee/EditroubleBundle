@@ -31,7 +31,7 @@ in the ``app/AppKernel.php`` file of your project:
             $bundles = array(
                 // ...
 
-                new FreezyBee\EditroubleBundle\EditroubleBundle(),
+                new FreezyBee\EditroubleBundle\FreezyBeeEditroubleBundle(),
             );
 
             // ...
@@ -51,7 +51,7 @@ Step 3: Set routes
     # app/config/routing.yml
 
     editrouble:
-        resource: '@EditroubleBundle/Resources/config/routing.yml'
+        resource: '@FreezyBeeEditroubleBundle/Resources/config/routing.yml'
 
 ..
 
@@ -62,7 +62,7 @@ Step 4: Add JS file to base template
 
     <body>
         ...
-        {% include("EditroubleBundle::includejsfiles.html.twig") %}
+        {% include("FreezyBeeEditroubleBundle::includejsfiles.html.twig") %}
     </body>
 ..
 
@@ -75,8 +75,8 @@ Step 5: Update database schema
 ..
 
 
-Step 6: Change user role and empty info message (optionally)
-------------------------------------------------------------
+Step 6: Change user role and placeholder (optionally)
+-----------------------------------------------------
 
 You can add config section to config.yml
 
@@ -84,9 +84,9 @@ You can add config section to config.yml
 
     # app/config/config.yml
 
-    editrouble:
+    freezy_bee_editrouble:
         role: ROLE_EDITOR # default is ROLE_ADMIN
-        info_message: 'Please fill this textarea...' # default is 'Zadejte text...'
+        placeholder: 'Please fill this textarea...' # default is 'Zadejte text...'
 ..
 
 Step 7: How to use it?

@@ -1,19 +1,15 @@
 services:
-    freezy_bee_editrouble.twig_extension:
+    freezybee.editrouble.twig_extension:
         class: FreezyBee\EditroubleBundle\Twig\EditroubleExtension
-        arguments: [%editrouble.info_message%, %editrouble.role%]
+        arguments: [%freezy_bee_editrouble.placeholder%, %freezy_bee_editrouble.role%]
         tags:
             - { name: twig.extension }
         autowire: true
 
-#    freezy_bee_editrouble.controller:
-#        class: FreezyBee\EditroubleBundle\Controller\EditroubleController
-#        arguments: ['@freezy_bee_editrouble.model.content_provider']
-
-    freezy_bee_editrouble.model.content_provider:
+    freezybee.editrouble.model.content_provider:
         class: FreezyBee\EditroubleBundle\Model\ContentProvider
-        arguments: ['@cache.app', '@freezy_bee_editrouble.model.storage.doctrine']
+        arguments: ['@cache.app', '@freezybee.editrouble.model.storage.doctrine']
 
-    freezy_bee_editrouble.model.storage.doctrine:
+    freezybee.editrouble.model.storage.doctrine:
         class: FreezyBee\EditroubleBundle\Model\Storage\Doctrine
         arguments: ['@doctrine.orm.entity_manager']

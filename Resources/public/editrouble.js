@@ -26,7 +26,7 @@ var forEach = function (array, callback, scope) {
     }
 };
 
-function Editrouble(link) {
+function Editrouble(link, placeholder) {
     var editrouble, showBtn, saveBtn;
     var editor = false;
     var active = false;
@@ -43,6 +43,9 @@ function Editrouble(link) {
             toolbar: {
                 allowMultiParagraphSelection: false,
                 buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3']
+            },
+            placeholder: {
+                text: placeholder
             }
         });
 

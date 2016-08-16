@@ -1,3 +1,3 @@
 editrouble_update:
     path:      /editrouble
-    defaults:  { _controller: EditroubleBundle:Editrouble:update }
+    defaults:  { _controller: FreezyBeeEditroubleBundle:Editrouble:update }

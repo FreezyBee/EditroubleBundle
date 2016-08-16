@@ -5,9 +5,9 @@ namespace FreezyBee\EditroubleBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class EditroubleBundle
+ * Class FreezyBeeEditroubleBundle
  * @package FreezyBee\EditroubleBundle
  */
-class EditroubleBundle extends Bundle
+class FreezyBeeEditroubleBundle extends Bundle
 {
 }

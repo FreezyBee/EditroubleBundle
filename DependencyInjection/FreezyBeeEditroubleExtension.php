@@ -8,10 +8,10 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
- * Class EditroubleExtension
+ * Class FreezyBeeEditroubleExtension
  * @package FreezyBee\EditroubleBundle\DependencyInjection
  */
-class EditroubleExtension extends Extension
+class FreezyBeeEditroubleExtension extends Extension
 {
     /**
      * @param array $configs An array of configuration values
@@ -22,8 +22,8 @@ class EditroubleExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-        $container->setParameter('editrouble.role', $config['role']);
-        $container->setParameter('editrouble.info_message', $config['info_message']);
+        $container->setParameter('freezy_bee_editrouble.role', $config['role']);
+        $container->setParameter('freezy_bee_editrouble.placeholder', $config['placeholder']);
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
@@ -34,6 +34,6 @@ class EditroubleExtension extends Extension
      */
     public function getAlias()
     {
-        return 'editrouble';
+        return 'freezy_bee_editrouble';
     }
 }

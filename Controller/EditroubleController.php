@@ -18,12 +18,12 @@ class EditroubleController extends Controller
      */
     public function updateAction(Request $request)
     {
-        $role = $this->getParameter('editrouble.role');
+        $role = $this->getParameter('freezy_bee_editrouble.role');
 
         if ($this->isGranted($role)) {
             $data = json_decode($request->getContent());
 
-            $contentProvider = $this->get('freezy_bee_editrouble.model.content_provider');
+            $contentProvider = $this->get('freezybee.editrouble.model.content_provider');
 
             foreach ($data as $item) {
                 $contentProvider->saveContent(

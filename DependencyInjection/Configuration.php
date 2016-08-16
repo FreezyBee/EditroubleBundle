@@ -17,12 +17,12 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('editrouble');
+        $rootNode = $treeBuilder->root('freezybee_editrouble');
 
         $rootNode
             ->children()
                 ->scalarNode('role')->defaultValue('ROLE_ADMIN')->end()
-                ->scalarNode('info_message')->defaultValue('Zadejte text...')->end()
+                ->scalarNode('placeholder')->defaultValue('Zadejte text...')->end()
             ->end();
 
         return $treeBuilder;

@@ -16,7 +16,7 @@ class EditroubleExtension extends \Twig_Extension
     /**
      * @var string
      */
-    private $infoMessage;
+    private $placeholder;
 
     /**
      * @var string
@@ -40,20 +40,20 @@ class EditroubleExtension extends \Twig_Extension
 
     /**
      * EditroubleExtension constructor.
-     * @param string $infoMessage
+     * @param string $placeholder
      * @param string $role
      * @param Translator $translator
      * @param AuthorizationCheckerInterface $securityChecker
      * @param ContentProvider $contentProvider
      */
     public function __construct(
-        $infoMessage,
+        $placeholder,
         $role,
         Translator $translator,
         AuthorizationCheckerInterface $securityChecker,
         ContentProvider $contentProvider
     ) {
-        $this->infoMessage = $infoMessage;
+        $this->placeholder = $placeholder;
         $this->role = $role;
         $this->translator = $translator;
         $this->contentProvider = $contentProvider;
@@ -65,9 +65,14 @@ class EditroubleExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return ['get_editrouble_role' => new \Twig_SimpleFunction('get_editrouble_role', function () {
-            return $this->role;
-        })];
+        return [
+            'get_editrouble_role' => new \Twig_SimpleFunction('get_editrouble_role', function () {
+                return $this->role;
+            }),
+            'get_editrouble_placeholder' => new \Twig_SimpleFunction('get_editrouble_placeholder', function () {
+                return $this->placeholder;
+            })
+        ];
     }
 
     /**
@@ -99,8 +104,7 @@ class EditroubleExtension extends \Twig_Extension
             if ($this->securityChecker->isGranted($this->role)) {
                 $json = json_encode(['namespace' => $namespace, 'name' => $name]);
 
-                return '<div class="editrouble" data-editrouble=\'' . $json . '\'>' .
-                ($item ? $item : $this->infoMessage) . '</div>';
+                return '<div class="editrouble" data-editrouble=\'' . $json . '\'>' . $item . '</div>';
             }
 
             return $item;
